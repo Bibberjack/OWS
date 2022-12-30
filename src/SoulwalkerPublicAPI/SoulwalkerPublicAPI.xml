@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SoulwalkerPublicAPI</name>
+    </assembly>
+    <members>
+        <member name="T:SoulwalkerPublicAPI.Program">
+            <summary>
+            OWS Public API Program
+            </summary>
+            <remarks>
+            The program class.
+            </remarks>
+        </member>
+        <member name="M:SoulwalkerPublicAPI.Program.Main(System.String[])">
+            <summary>
+            Soulwalker Public API Main
+            </summary>
+            <remarks>
+            The program entry point.
+            </remarks>
+        </member>
+        <member name="M:SoulwalkerPublicAPI.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Soulwalker Public API CreateHostBuilder
+            </summary>
+            <remarks>
+            Configure the web host.
+            </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,1 +1,22 @@
 version: '3.7'
+
+services:
+
+# Soulwalker Public Api
+  soulwalkerpublicapi:
+    image: ${REGISTRY:-ows}/soulwalkerpublicapi:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: SoulwalkerPublicAPI/Dockerfile
+    environment:
+     - OWSStorageConfig__OWSDBBackend=${DATABASE}
+     - OWSStorageConfig__OWSDBConnectionString=${DATABASE_CONNECTION_STRING}
+     - OWSAPIPathConfig__InternalPublicApiURL=${InternalPublicApiURL}
+     - OWSAPIPathConfig__InternalInstanceManagementApiURL=${InternalInstanceManagementApiURL}
+     - OWSAPIPathConfig__InternalCharacterPersistenceApiURL=${InternalCharacterPersistenceApiURL}
+    ports:
+      - "44340:80"
+      - "44341:443"
+    depends_on:
+      - database
+      - messaging
