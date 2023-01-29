@@ -4,6 +4,47 @@
         <name>SoulwalkerPublicAPI</name>
     </assembly>
     <members>
+        <member name="M:SoulwalkerPublicAPI.Controllers.UsersController.TestUpdateCharacterStrengthAndAgility(SoulwalkerPublicAPI.Requests.Users.TestUpdateCharacterStrengthAndAgilityRequest)">
+            <summary>
+            Test Update the Strength and Agility of a Character
+            </summary>
+            <remarks>
+            Test Update the Strength and Agility of a Character specified by Character. We also require a valid UserSessionGUID
+            </remarks>
+            <param name="request">
+            <b>CustomerGUID</b> - This is the API Key.<br/>
+            <b>UserSessionGUID</b> - This is a valid UserSessionGUID that contains the CharacterName we need to update.<br/>
+            <b>CharacterName</b> - This is the name of the character to update.<br/>
+            <b>Strength</b> - This is the Strength value to update.
+             <b>Agility</b> - This is the Agility value to update.
+            </param>
+        </member>
+        <member name="M:SoulwalkerPublicAPI.Controllers.UsersController.AddOrUpdateCustomCharacterDataCustomization(SoulwalkerPublicAPI.Requests.Users.AddOrUpdateCustomCharacterDataCustomizationRequest)">
+            <summary>
+            AddOrUpdateCustomCharacterDataCustomizationRequest
+            </summary>
+            <remarks>
+            Add or Update CustomCharacterData for the Character Customization specified by Character. We also require a valid UserSessionGUID
+            </remarks>
+            <param name="request">
+            <b>CustomerGUID</b> - This is the API Key.<br/>
+            <b>UserSessionGUID</b> - This is a valid UserSessionGUID that contains the CharacterName we need to update.<br/>
+            <b>AddOrUpdateCustomCharacterData</b> - This is the Value to update.
+            </param>
+        </member>
+        <member name="M:SoulwalkerPublicAPI.Controllers.UsersController.AddOrUpdateRaceClassGender(SoulwalkerPublicAPI.Requests.Users.AddOrUpdateRaceClassGenderRequest)">
+            <summary>
+            AddOrUpdateRaceClassGenderRequest
+            </summary>
+            <remarks>
+            Add or Update CustomCharacterData for the Race, Class and Gender specified by Character. We also require a valid UserSessionGUID
+            </remarks>
+            <param name="request">
+            <b>CustomerGUID</b> - This is the API Key.<br/>
+            <b>UserSessionGUID</b> - This is a valid UserSessionGUID that contains the CharacterName we need to update.<br/>
+            <b>AddOrUpdateCustomCharacterData</b> - This is the Value of Race, Class and Gender to update.
+            </param>
+        </member>
         <member name="T:SoulwalkerPublicAPI.Program">
             <summary>
             OWS Public API Program
@@ -26,6 +67,70 @@
             </summary>
             <remarks>
             Configure the web host.
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.AddOrUpdateCustomCharacterDataCustomizationRequest.UserSessionGUID">
+            <summary>
+            User Session GUID
+            </summary>
+            <remarks>
+            This is a valid UserSessionGUID that contains the CharacterName we need to update.
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.AddOrUpdateCustomCharacterDataCustomizationRequest.addOrUpdateCustomCharacterData">
+            <summary>
+            AddOrUpdateCustomCharacterData
+            </summary>
+            <remarks>
+            This is the Custom Character Data to uppdate.
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.AddOrUpdateRaceClassGenderRequest.UserSessionGUID">
+            <summary>
+            User Session GUID
+            </summary>
+            <remarks>
+            This is a valid UserSessionGUID that contains the CharacterName we need to update.
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.AddOrUpdateRaceClassGenderRequest.addOrUpdateCustomCharacterData">
+            <summary>
+            AddOrUpdateCustomCharacterData
+            </summary>
+            <remarks>
+            This is the Custom Character Data to uppdate. (Race)
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.TestUpdateCharacterStrengthAndAgilityRequest.UserSessionGUID">
+            <summary>
+            User Session GUID
+            </summary>
+            <remarks>
+            This is a valid UserSessionGUID that contains the CharacterName we need to update.
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.TestUpdateCharacterStrengthAndAgilityRequest.CharacterName">
+            <summary>
+            Character Name
+            </summary>
+            <remarks>
+            This is the name of the character to update.
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.TestUpdateCharacterStrengthAndAgilityRequest.Strength">
+            <summary>
+            Strength
+            </summary>
+            <remarks>
+            This is the Strength value to update.
+            </remarks>
+        </member>
+        <member name="P:SoulwalkerPublicAPI.Requests.Users.TestUpdateCharacterStrengthAndAgilityRequest.Agility">
+            <summary>
+            Agility
+            </summary>
+            <remarks>
+            This is the Agility value to update.
             </remarks>
         </member>
     </members>

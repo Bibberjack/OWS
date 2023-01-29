@@ -188,6 +188,8 @@ namespace OWSPublicAPI
             container.Register<IPublicAPIInputValidation, DefaultPublicAPIInputValidation>(Lifestyle.Singleton);
             container.Register<ICustomCharacterDataSelector, DefaultCustomCharacterDataSelector>(Lifestyle.Singleton);
             container.Register<IHeaderCustomerGUID, HeaderCustomerGUID>(Lifestyle.Scoped);
+            // Added for Soul
+            container.Register<ISoulCustomCharacterDataSelector, DefaultSoulCustomCharacterDataSelector>(Lifestyle.Singleton);
 
             var externalloginproviderfactory = new ExternalLoginProviderFactory(container);
 

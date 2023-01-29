@@ -33,7 +33,9 @@ namespace OWSPublicAPI.Requests.Characters
         private Guid CustomerGUID;
         //private IServiceProvider ServiceProvider;
         private ICharactersRepository charactersRepository;
-        private ICustomCharacterDataSelector customCharacterDataSelector;
+        //private ICustomCharacterDataSelector customCharacterDataSelector;
+        // For Soul Swaped
+        private ISoulCustomCharacterDataSelector soulCustomCharacterDataSelector;
 
         /// <summary>
         /// Set Dependencies for GetByNameRequest
@@ -41,12 +43,12 @@ namespace OWSPublicAPI.Requests.Characters
         /// <remarks>
         /// Injects the dependencies for the GetByNameRequest.
         /// </remarks>
-        public void SetData(ICharactersRepository charactersRepository, IHeaderCustomerGUID customerGuid, ICustomCharacterDataSelector customCharacterDataSelector)
+        public void SetData(ICharactersRepository charactersRepository, IHeaderCustomerGUID customerGuid, ISoulCustomCharacterDataSelector soulCustomCharacterDataSelector)
         {
             //CustomerGUID = new Guid("56FB0902-6FE7-4BFE-B680-E3C8E497F016");
             CustomerGUID = customerGuid.CustomerGUID;
             this.charactersRepository = charactersRepository;
-            this.customCharacterDataSelector = customCharacterDataSelector;
+            this.soulCustomCharacterDataSelector = soulCustomCharacterDataSelector;
         }
 
         /// <summary>
@@ -75,8 +77,9 @@ namespace OWSPublicAPI.Requests.Characters
             foreach (CustomCharacterData currentCustomCharacterData in customCharacterDataItems)
             {
                 //Use the ICustomCharacterDataSelector implementation to filter which fields are returned
-                if (customCharacterDataSelector.ShouldExportThisCustomCharacterDataField(currentCustomCharacterData.CustomFieldName))
-                {
+                //if (customCharacterDataSelector.ShouldExportThisCustomCharacterDataField(currentCustomCharacterData.CustomFieldName))
+                if (soulCustomCharacterDataSelector.ShouldExportThisCustomCharacterDataField(currentCustomCharacterData.CustomFieldName))
+                    {
                     //Add the filtered Custom Character Data
                     Output.CustomCharacterDataRows.Add(currentCustomCharacterData);
                 }

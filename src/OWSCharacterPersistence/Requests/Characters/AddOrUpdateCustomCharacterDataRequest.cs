@@ -23,6 +23,7 @@ namespace OWSCharacterPersistence.Requests.Characters
 
         public async Task Handle()
         {
+            // Update
             await charactersRepository.AddOrUpdateCustomCharacterData(customerGUID, addOrUpdateCustomCharacterData);
 
             return;
