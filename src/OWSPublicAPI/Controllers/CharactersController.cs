@@ -35,6 +35,8 @@ namespace OWSPublicAPI.Controllers
         private readonly IHeaderCustomerGUID _customerGuid;
         private readonly ICustomCharacterDataSelector _customCharacterDataSelector;
         private readonly IGetReadOnlyPublicCharacterData _getReadOnlyPublicCharacterData;
+        // Changed for Soul
+        private readonly ISoulCustomCharacterDataSelector _soulCustomCharacterDataSelector;
 
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace OWSPublicAPI.Controllers
         /// </remarks>
 
         public CharactersController(Container container, IUsersRepository usersRepository, ICharactersRepository charactersRepository, IHeaderCustomerGUID customerGuid, 
-            ICustomCharacterDataSelector customCharacterDataSelector, IGetReadOnlyPublicCharacterData getReadOnlyPublicCharacterData)
+            ISoulCustomCharacterDataSelector soulCustomCharacterDataSelector, IGetReadOnlyPublicCharacterData getReadOnlyPublicCharacterData)
 
         {
             _container = container;
@@ -53,7 +55,7 @@ namespace OWSPublicAPI.Controllers
             _charactersRepository = charactersRepository;
             _customerGuid = customerGuid;
 
-            _customCharacterDataSelector = customCharacterDataSelector;
+            _soulCustomCharacterDataSelector = soulCustomCharacterDataSelector;
             _getReadOnlyPublicCharacterData = getReadOnlyPublicCharacterData;
         }
 
@@ -86,7 +88,7 @@ namespace OWSPublicAPI.Controllers
         public async Task<IActionResult> GetByName([FromBody] GetByNameDTO request)
         {
 
-            GetByNameRequest getByNameRequest = new GetByNameRequest(request, _usersRepository, _charactersRepository, _customerGuid, _customCharacterDataSelector, _getReadOnlyPublicCharacterData);
+            GetByNameRequest getByNameRequest = new GetByNameRequest(request, _usersRepository, _charactersRepository, _customerGuid, _soulCustomCharacterDataSelector, _getReadOnlyPublicCharacterData);
             return await getByNameRequest.Handle();
         }
 

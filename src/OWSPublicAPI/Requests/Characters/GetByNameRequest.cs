@@ -27,6 +27,8 @@ namespace OWSPublicAPI.Requests.Characters
         private readonly ICharactersRepository _charactersRepository;
         private readonly ICustomCharacterDataSelector _customCharacterDataSelector;
         private readonly IGetReadOnlyPublicCharacterData _getReadOnlyPublicCharacterData;
+        // For Soul Swaped
+        private ISoulCustomCharacterDataSelector _soulCustomCharacterDataSelector;
 
         /// <summary>
         /// Constructor for GetByNameRequest
@@ -35,13 +37,13 @@ namespace OWSPublicAPI.Requests.Characters
         /// Injects the dependencies for the GetByNameRequest.
         /// </remarks>
         public GetByNameRequest(GetByNameDTO getByNameDTO, IUsersRepository usersRepository, ICharactersRepository charactersRepository, IHeaderCustomerGUID customerGuid, 
-            ICustomCharacterDataSelector customCharacterDataSelector, IGetReadOnlyPublicCharacterData getReadOnlyPublicCharacterData)
+            ISoulCustomCharacterDataSelector soulCustomCharacterDataSelector, IGetReadOnlyPublicCharacterData getReadOnlyPublicCharacterData)
         {
             _getByNameDTO = getByNameDTO;
             _customerGUID = customerGuid.CustomerGUID;
             _usersRepository = usersRepository;
             _charactersRepository = charactersRepository;
-            _customCharacterDataSelector = customCharacterDataSelector;
+            _soulCustomCharacterDataSelector = soulCustomCharacterDataSelector;
             _getReadOnlyPublicCharacterData = getReadOnlyPublicCharacterData;
         }
 
@@ -86,7 +88,7 @@ namespace OWSPublicAPI.Requests.Characters
             foreach (CustomCharacterData currentCustomCharacterData in customCharacterDataItems)
             {
                 //Use the ICustomCharacterDataSelector implementation to filter which fields are returned
-                if (_customCharacterDataSelector.ShouldExportThisCustomCharacterDataField(currentCustomCharacterData.CustomFieldName))
+                if (_soulCustomCharacterDataSelector.ShouldExportThisCustomCharacterDataField(currentCustomCharacterData.CustomFieldName))
                 {
                     CustomCharacterDataDTO customCharacterDataDTO = new CustomCharacterDataDTO()
                     {
